@@ -12,6 +12,11 @@ body {
 {
   flex-grow: 0 !important;
 }
+.btn
+{
+  color: white !important;
+  background-color: red !important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
