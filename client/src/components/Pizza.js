@@ -2,11 +2,14 @@ import pizzas from "../4.1 pizzasdata";
 import React from "react";
 import {useState} from "react"
 import {Modal,Button} from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addToCartAction } from "../actions/CartActions";
 
 export default function Pizza({pizza}){
     const [varient,setVarient]=useState("small");
     const [quantity,setQuantity]=useState(1);
     const [show, setShow] = useState(false);
+    const dispatch=useDispatch()
     const handleClose = () =>{ 
         console.log(show)
         setShow(false)
@@ -17,6 +20,9 @@ export default function Pizza({pizza}){
         console.log(show)
         setShow(true);
         console.log(show)
+    }
+    const addToCart=()=>{
+        dispatch(addToCartAction(pizza,varient,quantity));
     }
 
     return(<div  style={{margin:"70px"}} className="shadow p-3 mb-5 bg-body rounded">
@@ -49,7 +55,7 @@ export default function Pizza({pizza}){
                 </p>
             </div>
             <div className="w-100 ">
-                <button className="btn">Add to Cart</button>
+                <button className="btn" onClick={addToCart}>Add to Cart</button>
             </div>
         </div>
     <Modal show={show} onHide={handleClose}>

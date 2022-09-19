@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.fa-plus
+{
+  color:green;
+  font-size: 20px;
+}
+.fa-minus , .fa-trash 
+{
+  color:red;
+  font-size: 20px;
+}
+
+.flex-container
+{
+  display: flex !important;
+}
+
+
