@@ -1,0 +1,28 @@
+{
+  "name": "pizza",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "import:data": "nodemon seeder.js",
+    "destroy:data": "nodemon seeder.js -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahmoudRedaSayed/Pizza-Delivery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MahmoudRedaSayed/Pizza-Delivery/issues"
+  },
+  "homepage": "https://github.com/MahmoudRedaSayed/Pizza-Delivery#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1",
+    "nodemon": "^2.0.20"
+  }
+}
