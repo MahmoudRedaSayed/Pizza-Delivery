@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import { addToCartAction,deleteFromCartAction } from "../actions/CartActions"
+import Checkout from "../components/Checkout"
 export default function CartScreen(){
     const dispatch=useDispatch()
     const cartState=useSelector(state=>state.addToCart)
@@ -35,7 +36,7 @@ export default function CartScreen(){
         </div>
         <div className='col-md-4'>
             <span style={{fontSize:"45px" , display :'block'}}>SubTotal : {subTotal}/_ EG</span>
-            <button className="btn"> pay Now</button>
+            <Checkout subTotal={subTotal}></Checkout>
         </div>
         
     </div>
