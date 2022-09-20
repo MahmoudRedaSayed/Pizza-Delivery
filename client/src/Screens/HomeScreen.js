@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from "react-redux"
 import { getAllPizzas } from "../actions/PizzaActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import Filter from "../components/Fliter";
 export default function HomeScreen(){
     const pizzasState = useSelector((state) => state.getAllPizzas);
     const{pizzas,error,loading}=pizzasState
@@ -17,6 +18,7 @@ export default function HomeScreen(){
         loading?(<Loader></Loader>):
         error?(<Error data="something is wrong"></Error>)
         :<div className="row">
+            <Filter></Filter>
             {
                 pizzas.map(pizza=>(
                     <div className="col-md-4" key={pizza.name}>

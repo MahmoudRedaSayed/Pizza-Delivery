@@ -16,3 +16,25 @@ export const getAllPizzas=()=>async (dispatch,getState)=>{
         dispatch({type:GET_PIZZAS_FAIL,payload:error})
     }
 }
+
+export const filterPizzasAction=(searchkey , category)=>async dispatch=>{
+
+  
+    dispatch({type:'GET_PIZZAS_REQUEST'})
+
+    try {
+        var filteredPizzas ;
+        const response = await axios.get('http://localhost:5000/api/pizzas')
+        filteredPizzas = response.data.filter(pizza=>pizza.name.toLowerCase().includes(searchkey.toLowerCase()))
+         
+        if(category!='all')
+        {
+            filteredPizzas = response.data.filter(pizza=>pizza.category.toLowerCase()==category)
+
+        }
+        dispatch({type:'GET_PIZZAS_SUCCESS' , payload : filteredPizzas})
+    } catch (error) {
+        dispatch({type:'GET_PIZZAS_FAILED' , payload : error})
+    }
+
+}

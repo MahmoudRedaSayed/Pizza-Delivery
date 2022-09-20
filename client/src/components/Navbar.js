@@ -17,7 +17,7 @@ export default function NavBar(){
       <div className="navbar-nav ml-auto">
         {user?
           (<div><a className="nav-link " aria-current="page" onClick={()=>dispatch(logoutUserAction())}>logout</a>
-          <a className="nav-link " aria-current="page" href="/login">orders</a></div>):
+          <a className="nav-link " aria-current="page" href="/orders">orders</a></div>):
         (<a className="nav-link " aria-current="page" href="/login">Login</a>)
         }
         
