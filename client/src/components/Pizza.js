@@ -4,8 +4,11 @@ import {useState} from "react"
 import {Modal,Button} from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCartAction } from "../actions/CartActions";
+import AOS from "aos";
+import "../../node_modules/aos/dist/aos.css"
 
 export default function Pizza({pizza}){
+    AOS.init()
     const [varient,setVarient]=useState("small");
     const [quantity,setQuantity]=useState(1);
     const [show, setShow] = useState(false);
@@ -25,7 +28,7 @@ export default function Pizza({pizza}){
         dispatch(addToCartAction(pizza,varient,quantity));
     }
 
-    return(<div  style={{margin:"70px"}} className="shadow p-3 mb-5 bg-body rounded">
+    return(<div data-aos="zoom-in"  style={{margin:"90px"}} className="shadow p-3 mb-5 bg-body rounded">
         <div onClick={handleShow} ><div>{pizza.name}</div>
         <img src={pizza.image} className="img-fluid" style={{width:"200px",height:"200px"}}></img></div>
         <div  style={{display:'flex'}}>

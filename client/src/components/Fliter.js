@@ -6,7 +6,7 @@ export default function Filter() {
     const[searchkey , setsearchkey] = useState('')
     const[category , setcategory] = useState('all')
     return (
-        <div className="container" style={{padding:"0 100px"}}>
+        <div className="container" style={{padding:"0 100px",marginBottom:"50px"}}>
             <div className="row  justify-content-center shadow-lg p-3 mb-5 bg-white rounded" style={{alignItems:"center"}}>
 
                     <div className=" col-md-3 w-30">

@@ -4,7 +4,10 @@ import { getUserOrdersAction } from '../actions/Order'
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import Success from '../components/Success'
+import AOS from "aos";
+import "../../node_modules/aos/dist/aos.css"
 export default function OrdersScreen() {
+    AOS.init();
     const dispatch = useDispatch()
     const orderstate = useSelector(state=>state.getUserOrders)
     const {orders , error , loading,success} = orderstate
@@ -27,7 +30,7 @@ export default function OrdersScreen() {
                 {loading && (<Loader/>)}
                 {error && (<Error data='Something went wrong'/>)}
                 {success&&orders && orders.map(order=>{
-                    return <div key={order._id} className="col-md-8 m-2 p-1" data-aos='fade-down'  style={{backgroundColor:'red' , color:'white'}}>
+                    return <div data-aos="fade-down" key={order._id} className="col-md-8 m-2 p-1" data-aos='fade-down'  style={{backgroundColor:'red' , color:'white'}}>
                             <div key={order._id} className="flex-container">
                                 <div className='text-left w-100 m-1'>
                                     <h2 style={{fontSize:'25px'}}>Items</h2>
