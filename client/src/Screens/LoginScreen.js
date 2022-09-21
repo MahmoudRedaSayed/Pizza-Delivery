@@ -27,7 +27,7 @@ export default function LoginScreen(){
         console.log(user)
     }
     return(
-        <div className="row justify-content-center items-center">
+        <div className="row justify-content-center items-center login">
             {loading?(<Loader></Loader>):""}
             {error?(<Error data="error in data"></Error>):""}
             <h1>Login</h1>

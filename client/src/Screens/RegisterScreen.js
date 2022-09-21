@@ -35,7 +35,7 @@ export default function RegisterScreen(){
         }
     }
     return(
-        <div className="row justify-content-center algin-items-center">
+        <div className="row justify-content-center algin-items-center register">
              {loading?(<Loader></Loader>):""}
             {error?(<Error data="error in data"></Error>):""}
             <h1 >Register</h1>
