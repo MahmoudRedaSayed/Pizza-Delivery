@@ -7,13 +7,19 @@ import Error from "./Error";
 import Success from "./Success";
 export default function Checkout({subTotal}){
     const {loading,error,success}=useSelector(state=>state.placeOrder)
+    const {user} = useSelector(state=>state.loginUser)
     const dispatch=useDispatch();
     const handleToken=(token)=>{
-        console.log(token)
-        dispatch(placeOrderAction(subTotal,token))
+        if(user&&Number(subTotal)!==0)
+        {
+            console.log(token)
+            dispatch(placeOrderAction(subTotal,token))
+        }
+        else
+        window.location.href="/login"
     }
     return (
-        <div>
+        subTotal?<div>
             {loading&&(<Loader></Loader>)}
             {error&&(<Error data={error}></Error>)}
             {success&&(<Success data={"your order is paied"}></Success>)}
@@ -24,8 +30,8 @@ export default function Checkout({subTotal}){
                 currency="INR"
                 stripeKey="pk_test_51Lk44xDFJKV4Y7SsJGz17BGFxsuLOMyF91Hjs2DqPrlz85MScfEZ2JbMrtWTXxV3HvhTYvivFMjIZOGyqEURGCej00cm6b8fK8"
             >
-                <button className="btn"> pay Now</button>
+                <button  className="btn"> pay Now</button>
             </StripeCheckout> 
-        </div>
+        </div>:""
     )
 }

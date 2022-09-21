@@ -1,9 +1,11 @@
 const admin = (req, res, next) => {
-    if (req.user && req.user.Admin) {
+  console.log(req.headers)
+  console.log("the auth ",req.headers.authorization)
+    if (req.headers.authorization==="true") {
       next()
     } else {
-      console.log(req.user)
       res.status(401)
       throw new Error('Not authorized as an admin')
     }
   }
+module.exports={admin};

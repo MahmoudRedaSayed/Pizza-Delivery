@@ -7,12 +7,16 @@ import Success from '../components/Success'
 export default function OrdersScreen() {
     const dispatch = useDispatch()
     const orderstate = useSelector(state=>state.getUserOrders)
-    const {orders , error , loading} = orderstate
+    const {orders , error , loading,success} = orderstate
+    const {user} = useSelector(state=>state.loginUser)
 
     useEffect(() => {
-
-        dispatch(getUserOrdersAction())
-      
+        if(user)
+        {
+            dispatch(getUserOrdersAction())
+        }
+        else
+        window.location.href="/login"
     }, [])
 
     return (
@@ -22,7 +26,7 @@ export default function OrdersScreen() {
             <div className="row justify-content-center">
                 {loading && (<Loader/>)}
                 {error && (<Error data='Something went wrong'/>)}
-                {orders && orders.map(order=>{
+                {success&&orders && orders.map(order=>{
                     return <div key={order._id} className="col-md-8 m-2 p-1" data-aos='fade-down'  style={{backgroundColor:'red' , color:'white'}}>
                             <div key={order._id} className="flex-container">
                                 <div className='text-left w-100 m-1'>

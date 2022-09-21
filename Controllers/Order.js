@@ -60,4 +60,28 @@ const getUserOrders=async(req, res) => {
         return res.status(400).json({ message: 'Something went wrong' });
     }
   }
-module.exports={placeOrder,getUserOrders}
+
+  const getAllOrders=async(req,res)=>{
+    try{
+            const orders=await Order.find({});
+            res.status(200).json(orders);
+    }
+    catch(error)
+    {
+        return res.status(400).json({ message: 'Something went wrong' });   
+    }
+  }
+  const deliverOrder=async(req,res)=>{
+    try{
+        const {id}=req.params;
+        console.log("id",id)
+        const orders=await Order.findByIdAndUpdate(id,{isDelivered:true});
+        res.status(200).json("order is delivered");
+        }
+        catch(error)
+        {
+            return res.status(400).json({ message: 'Something went wrong' });   
+        }
+  }
+
+module.exports={placeOrder,getUserOrders,getAllOrders,deliverOrder}
