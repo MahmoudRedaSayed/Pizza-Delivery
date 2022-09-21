@@ -43,4 +43,26 @@ const loginUser= async (req,res)=>{
         res.status(400).json("error in server");
     }
 }
-module.exports={registerUser,loginUser}
+const deleteUser=async(req,res)=>{
+    try{
+        const {id}=req.params;
+        await User.findByIdAndDelete(id);
+        res.status(200).json("user is deleted");
+    }
+    catch(error)
+    {
+        res.status(400).json("error in server");
+    }
+}
+
+const getAllUsers=async(req,res)=>{
+    try{
+        const users=await User.find({});
+        res.status(200).json(users);
+    }
+    catch(error)
+    {
+        res.status(400).json("error in server");
+    }
+}
+module.exports={registerUser,loginUser,getAllUsers,deleteUser}

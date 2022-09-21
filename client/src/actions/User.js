@@ -5,6 +5,12 @@ import { REGISTER_USER_FAIL,
         LOGIN_USER_REQUEST,
         LOGIN_USER_SUCCESS,
         LOGIN_USER_FAIL,
+        DELETE_USER_REQUEST,
+        DELETE_USER_SUCCESS,
+        DELETE_USER_FAIL,
+        GET_ALL_USERS_REQUEST,
+        GET_ALL_USERS_SUCCESS,
+        GET_ALL_USERS_FAIL,
         LOGOUT_USER_FAIL,
         LOGOUT_USER_REQUEST,
         LOGOUT_USER_SUCCESS} from "../constants/User";
@@ -57,4 +63,61 @@ export const logoutUserAction=(user)=> async(dispatch,getState)=>
     }
     
 
+}
+
+export const getAllUsersAction=()=> async(dispatch,getState)=>
+{
+    const user=getState().loginUser.user;
+    try{
+    if(user.Admin)
+        {
+            dispatch({type:GET_ALL_USERS_REQUEST})
+            const config={
+                headers: {
+                    Authorization:`${user.Admin}`,
+                  },
+            }
+            const response=await axios.get(`http://localhost:5000/api/users`,config)
+            dispatch({type:GET_ALL_USERS_SUCCESS,payload:response.data})
+
+        }
+        else
+        {
+            window.location.href="/";
+            throw Error("Access denied");
+        }
+    }
+    catch(error)
+    {
+        dispatch({type:GET_ALL_USERS_FAIL,payload:error})
+    }
+}
+
+export const deleteUserAction=(id)=> async(dispatch,getState)=>
+{
+    const user=getState().loginUser.user;
+    try{
+    if(user.Admin)
+        {
+            dispatch({type:DELETE_USER_REQUEST})
+            const config={
+                headers: {
+                    Authorization:`${user.Admin}`,
+                  },
+            }
+            const response=await axios.delete(`http://localhost:5000/api/users/${id}`,config)
+            dispatch({type:DELETE_USER_SUCCESS})
+            dispatch(getAllUsersAction())
+
+        }
+        else
+        {
+            window.location.href="/";
+            throw Error("Access denied");
+        }
+    }
+    catch(error)
+    {
+        dispatch({type:DELETE_USER_FAIL,payload:error})
+    }
 }

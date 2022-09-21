@@ -1,12 +1,18 @@
-import {REGISTER_USER_FAIL, 
-        REGISTER_USER_REQUEST,
-        REGISTER_USER_SUCCESS,
-        LOGIN_USER_REQUEST,
-        LOGIN_USER_SUCCESS,
-        LOGIN_USER_FAIL,
-        LOGOUT_USER_FAIL,
-        LOGOUT_USER_REQUEST,
-        LOGOUT_USER_SUCCESS} from "../constants/User";
+import { REGISTER_USER_FAIL, 
+    REGISTER_USER_REQUEST,
+    REGISTER_USER_SUCCESS,
+    LOGIN_USER_REQUEST,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAIL,
+    DELETE_USER_REQUEST,
+    DELETE_USER_SUCCESS,
+    DELETE_USER_FAIL,
+    GET_ALL_USERS_REQUEST,
+    GET_ALL_USERS_SUCCESS,
+    GET_ALL_USERS_FAIL,
+    LOGOUT_USER_FAIL,
+    LOGOUT_USER_REQUEST,
+    LOGOUT_USER_SUCCESS} from "../constants/User";
 
 
 export const registerUserReducer=(state={} ,action)=>
@@ -20,6 +26,42 @@ export const registerUserReducer=(state={} ,action)=>
         case REGISTER_USER_SUCCESS:
             return{loading:false,success:true,user:action.payload}
         case REGISTER_USER_FAIL:
+            return {
+                loading:false,error:action.payload
+            }
+    default: return state
+    }
+}
+
+export const deleteUserReducer=(state={} ,action)=>
+{
+    switch(action.type)
+    {
+        case DELETE_USER_REQUEST:
+            return{
+                loading:true
+            }
+        case DELETE_USER_SUCCESS:
+            return{loading:false,success:true}
+        case DELETE_USER_FAIL:
+            return {
+                loading:false,error:action.payload
+            }
+    default: return state
+    }
+}
+
+export const getAllUsersReducer=(state={} ,action)=>
+{
+    switch(action.type)
+    {
+        case GET_ALL_USERS_REQUEST:
+            return{
+                loading:true
+            }
+        case GET_ALL_USERS_SUCCESS:
+            return{loading:false,success:true,users:action.payload}
+        case GET_ALL_USERS_FAIL:
             return {
                 loading:false,error:action.payload
             }

@@ -15,7 +15,8 @@ import Adminscreen from "./Screens/AdminScreen"
 import Orderslist from './Screens/OrdersListScreen';
 import Addpizza from "./Screens/AddPizzaScreen"
 import Pizzaslist from './Screens/PizzasListScreen';
-import Editpizza from "./Screens/EditPizzaScreen"
+import Editpizza from "./Screens/EditPizzaScreen";
+import UsersListScreen from "./Screens/UsersListScreen"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/admin/addpizza" element={<Addpizza/>} exact/>
           <Route path="/admin/pizzaslist" element={<Pizzaslist/>} exact/>
           <Route path="/admin/editpizza/:pizzaid" element={<Editpizza/>} exact/>
+          <Route path="/admin/userslist" element={<UsersListScreen/>} exact/>
         </Routes>
       </Router>
     </div>
