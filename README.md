@@ -18,13 +18,13 @@ it is pizza store to show the new pizzas and make orders via website
 - Redux
 - React 
 - mongodb
--stripe (payment tool)
+- stripe (payment tool)
 
 ## video demo
 ![](https://github.com/MahmoudRedaSayed/Pizza-Delivery/blob/main/videos/Demo.gif)
 
 ## Screenshots
-![register page](./Screenshots/registerPage.png)
+![register page](https://github.com/MahmoudRedaSayed/Pizza-Delivery/blob/main/Screenshots/registerPage.PNG)
 
-![payment success in stripe](./Screenshots/payment.png)
+![payment success in stripe](https://github.com/MahmoudRedaSayed/Pizza-Delivery/blob/main/Screenshots/payment.PNG)
 
