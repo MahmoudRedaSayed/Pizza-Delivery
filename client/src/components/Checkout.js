@@ -23,7 +23,7 @@ export default function Checkout({subTotal}){
             {loading&&(<Loader></Loader>)}
             {error&&(<Error data={error}></Error>)}
             {success&&(<Success data={"your order is paied"}></Success>)}
-            <StripeCheckout
+            {user?<StripeCheckout
                 token={handleToken}
                 shippingAddress
                 amount={subTotal*100}
@@ -31,7 +31,7 @@ export default function Checkout({subTotal}){
                 stripeKey="pk_test_51Lk44xDFJKV4Y7SsJGz17BGFxsuLOMyF91Hjs2DqPrlz85MScfEZ2JbMrtWTXxV3HvhTYvivFMjIZOGyqEURGCej00cm6b8fK8"
             >
                 <button  className="btn"> pay Now</button>
-            </StripeCheckout> 
+            </StripeCheckout>:<a href="/login">login to pay Now</a>} 
         </div>:""
     )
 }
